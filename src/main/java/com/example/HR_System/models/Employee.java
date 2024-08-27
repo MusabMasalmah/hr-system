@@ -31,8 +31,7 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
-    @NotNull(message = "Picture is required")
-    @Lob // Assuming `Byte` represents an image, consider using `@Lob` for large objects
+    @Lob
     private Byte picture;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Credit must be positive")
