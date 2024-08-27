@@ -11,13 +11,13 @@ import java.time.LocalDate;
 public class Attendance {
     @Id
     @SequenceGenerator(
-            name = "patient_sequence",
-            sequenceName = "patient_sequence",
+            name = "attendance_sequence",
+            sequenceName = "attendance_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "patient_sequence"
+            generator = "attendance_sequence"
     )
     private Long id;
     @ManyToOne

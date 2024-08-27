@@ -12,13 +12,13 @@ import java.time.LocalDate;
 public class LeaveRequest {
     @Id
     @SequenceGenerator(
-            name = "patient_sequence",
-            sequenceName = "patient_sequence",
+            name = "LeaveRequest_sequence",
+            sequenceName = "LeaveRequest_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "patient_sequence"
+            generator = "LeaveRequest_sequence"
     )
     private Long id;
     private LocalDate start_time;
