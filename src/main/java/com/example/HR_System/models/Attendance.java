@@ -1,6 +1,6 @@
-package com.example.HR_System.Models;
+package com.example.HR_System.models;
 
-import com.example.HR_System.Enums.Attendance_Type;
+import com.example.HR_System.enums.AttendanceType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,12 +25,12 @@ public class Attendance {
     private LocalDate date;
     private LocalDate start_time;
     private LocalDate end_time;
-    private Attendance_Type type;
+    private AttendanceType type;
 
     public Attendance() {
     }
 
-    public Attendance(Long id, Employee employee, LocalDate date, LocalDate start_time, LocalDate end_time, Attendance_Type type) {
+    public Attendance(Long id, Employee employee, LocalDate date, LocalDate start_time, LocalDate end_time, AttendanceType type) {
         this.id = id;
         this.employee = employee;
         this.date = date;

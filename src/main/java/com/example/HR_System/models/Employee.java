@@ -1,7 +1,7 @@
-package com.example.HR_System.Models;
+package com.example.HR_System.models;
 
 
-import com.example.HR_System.Enums.Roles;
+import com.example.HR_System.enums.Roles;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

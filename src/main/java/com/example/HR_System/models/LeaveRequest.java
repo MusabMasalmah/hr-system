@@ -1,7 +1,7 @@
-package com.example.HR_System.Models;
+package com.example.HR_System.models;
 
-import com.example.HR_System.Enums.Request_Status;
-import com.example.HR_System.Enums.Request_Type;
+import com.example.HR_System.enums.RequestStatus;
+import com.example.HR_System.enums.RequestType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,18 +23,18 @@ public class LeaveRequest {
     private Long id;
     private LocalDate start_time;
     private LocalDate end_time;
-    private Request_Status status;
+    private RequestStatus status;
     @ManyToOne
     private Employee employee;
     @ManyToOne
     private Employee hr_employee;
     private String reason;
-    private Request_Type type;
+    private RequestType type;
 
     public LeaveRequest() {
     }
 
-    public LeaveRequest(Long id, LocalDate start_time, LocalDate end_time, Request_Status status, Employee employee, Employee hr_employee, String reason, Request_Type type) {
+    public LeaveRequest(Long id, LocalDate start_time, LocalDate end_time, RequestStatus status, Employee employee, Employee hr_employee, String reason, RequestType type) {
         this.id = id;
         this.start_time = start_time;
         this.end_time = end_time;
