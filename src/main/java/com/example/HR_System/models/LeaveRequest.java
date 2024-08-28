@@ -22,8 +22,8 @@ public class LeaveRequest {
             generator = "LeaveRequest_sequence"
     )
     private Long id;
-    private LocalDate start_time;
-    private LocalDate end_time;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private RequestStatus status;
 
     @ManyToOne
@@ -43,14 +43,5 @@ public class LeaveRequest {
     public LeaveRequest() {
     }
 
-    public LeaveRequest(Long id, LocalDate start_time, LocalDate end_time, RequestStatus status, Employee employee, Employee hr_employee, String reason, RequestType type) {
-        this.id = id;
-        this.start_time = start_time;
-        this.end_time = end_time;
-        this.status = status;
-        this.employee = employee;
-        this.hr_employee = hr_employee;
-        this.reason = reason;
-        this.type = type;
-    }
+
 }

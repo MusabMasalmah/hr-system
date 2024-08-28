@@ -3,7 +3,6 @@ package com.example.HR_System.models;
 import com.example.HR_System.enums.Roles;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +13,8 @@ import java.util.List;
 @Setter
 public class Employee {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -34,6 +35,8 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
+    @Setter
+    @Getter
     @Lob
     private Byte picture;
 
@@ -53,11 +56,6 @@ public class Employee {
     @Min(value = 0, message = "Max paid leave cannot be negative")
     private Integer max_paid_leave;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Attendance> attendanceRecords;
-
-    @OneToMany(mappedBy = "employee")
-    private List<LeaveRequest> leaveRequests;
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Role is required")
@@ -67,14 +65,6 @@ public class Employee {
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
     private String password;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public @NotBlank(message = "Name is required") @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters") String getName() {
         return name;
@@ -90,14 +80,6 @@ public class Employee {
 
     public void setEmail(@NotBlank(message = "Email is required") @Email(message = "Email should be valid") String email) {
         this.email = email;
-    }
-
-    public Byte getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Byte picture) {
-        this.picture = picture;
     }
 
     public @DecimalMin(value = "0.0", inclusive = false, message = "Credit must be positive") Double getCredit() {
