@@ -3,45 +3,39 @@ package com.example.HR_System.models;
 import com.example.HR_System.enums.RequestStatus;
 import com.example.HR_System.enums.RequestType;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Data
+@Setter
+@Getter
 @Entity
 public class LeaveRequest {
+
+    // Getters and Setters
     @Id
-    @SequenceGenerator(
-            name = "LeaveRequest_sequence",
-            sequenceName = "LeaveRequest_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "LeaveRequest_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "leave_request_sequence")
+    @SequenceGenerator(name = "leave_request_sequence", sequenceName = "leave_request_sequence", allocationSize = 1)
     private Long id;
-    private LocalDate start_time;
-    private LocalDate end_time;
-    private RequestStatus status;
+
     @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+
     @ManyToOne
-    private Employee hr_employee;
+    @JoinColumn(name = "hr_employee_id", nullable = false)
+    private Employee hrEmployee;
+
+    private LocalDate startTime;
+    private LocalDate endTime;
+
+    @Enumerated(EnumType.STRING)
+    private RequestStatus status;
+
     private String reason;
+
+    @Enumerated(EnumType.STRING)
     private RequestType type;
 
-    public LeaveRequest() {
-    }
-
-    public LeaveRequest(Long id, LocalDate start_time, LocalDate end_time, RequestStatus status, Employee employee, Employee hr_employee, String reason, RequestType type) {
-        this.id = id;
-        this.start_time = start_time;
-        this.end_time = end_time;
-        this.status = status;
-        this.employee = employee;
-        this.hr_employee = hr_employee;
-        this.reason = reason;
-        this.type = type;
-    }
 }
