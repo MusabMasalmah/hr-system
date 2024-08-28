@@ -8,9 +8,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Employee {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -31,6 +34,8 @@ public class Employee {
     @Email(message = "Email should be valid")
     private String email;
 
+    @Setter
+    @Getter
     @Lob
     private Byte picture;
 
@@ -58,14 +63,6 @@ public class Employee {
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
     private String password;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public @NotBlank(message = "Name is required") @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters") String getName() {
         return name;
     }
@@ -80,14 +77,6 @@ public class Employee {
 
     public void setEmail(@NotBlank(message = "Email is required") @Email(message = "Email should be valid") String email) {
         this.email = email;
-    }
-
-    public Byte getPicture() {
-        return picture;
-    }
-
-    public void setPicture(Byte picture) {
-        this.picture = picture;
     }
 
     public @DecimalMin(value = "0.0", inclusive = false, message = "Credit must be positive") Double getCredit() {

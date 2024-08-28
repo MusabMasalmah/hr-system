@@ -14,6 +14,18 @@ public class DataSeeder {
     @Bean
     public CommandLineRunner loadData(EmployeeRepo employeeRepository) {
         return args -> {
+            Employee employee3 = new Employee();
+            employee3.setName("alawia Smith");
+            employee3.setEmail("123.smith@example.com");
+            employee3.setPicture(null);
+            employee3.setCredit(2000.0);
+            employee3.setPosition("123 Manager");
+            employee3.setPhone_number("0987654321");
+            employee3.setAddress("456 Oak Avenue");
+            employee3.setMax_paid_leave(20);
+            employee3.setRole(Roles.HR);
+            employee3.setPassword("securepass4567");
+
             Employee employee1 = new Employee();
             employee1.setName("John Doe");
             employee1.setEmail("john.doe@example.com");
@@ -38,7 +50,12 @@ public class DataSeeder {
             employee2.setRole(Roles.ADMIN);
             employee2.setPassword("securepass456");
 
+
+
+
             // Save employees to the database
+            employeeRepository.save(employee3);
+
             employeeRepository.save(employee1);
             employeeRepository.save(employee2);
         };
