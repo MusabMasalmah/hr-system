@@ -41,6 +41,7 @@ public class DataSeeder {
             // Save employees to the database
             employeeRepository.save(employee1);
             employeeRepository.save(employee2);
+
         };
     }
 }

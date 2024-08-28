@@ -7,8 +7,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Data
+@Getter
+@Setter
 public class Employee {
 
     @Id
@@ -50,9 +53,16 @@ public class Employee {
     @Min(value = 0, message = "Max paid leave cannot be negative")
     private Integer max_paid_leave;
 
+    @OneToMany(mappedBy = "employee")
+    private List<Attendance> attendanceRecords;
+
+    @OneToMany(mappedBy = "employee")
+    private List<LeaveRequest> leaveRequests;
+
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Role is required")
     private Roles role;
+
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")

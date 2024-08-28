@@ -1,17 +1,23 @@
 package com.example.HR_System.models;
 
 import com.example.HR_System.enums.AttendanceType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 
+@Setter
+@Getter
 @Entity
+
 public class Attendance {
 
     @Id
@@ -27,7 +33,7 @@ public class Attendance {
     private Long id;
 
     @ManyToOne
-    @NotNull(message = "Employee is required")
+    @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
     @NotNull(message = "Date is required")
@@ -57,51 +63,4 @@ public class Attendance {
         this.type = type;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getStart_time() {
-        return start_time;
-    }
-
-    public void setStart_time(LocalTime start_time) {
-        this.start_time = start_time;
-    }
-
-    public LocalTime getEnd_time() {
-        return end_time;
-    }
-
-    public void setEnd_time(LocalTime end_time) {
-        this.end_time = end_time;
-    }
-
-    public AttendanceType getType() {
-        return type;
-    }
-
-    public void setType(AttendanceType type) {
-        this.type = type;
-    }
 }
