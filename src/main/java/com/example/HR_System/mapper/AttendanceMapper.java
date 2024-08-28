@@ -11,9 +11,10 @@ public interface AttendanceMapper {
 
     AttendanceMapper INSTANCE = Mappers.getMapper(AttendanceMapper.class);
 
-    @Mapping(source = "employee.id", target = "employeeId")
     AttendanceDto toDto(Attendance attendance);
 
 
     Attendance toEntity(AttendanceDto attendanceDto);
+
+
 }

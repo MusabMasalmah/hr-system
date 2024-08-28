@@ -3,12 +3,12 @@ package com.example.HR_System.models;
 import com.example.HR_System.enums.Roles;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Employee {
 
     @Id
@@ -57,4 +57,6 @@ public class Employee {
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
     private String password;
+
+
 }
