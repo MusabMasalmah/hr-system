@@ -26,31 +26,29 @@ public class Attendance {
     )
     private Long id;
 
-    @ManyToOne
     @NotNull(message = "Employee is required")
-    private Employee employee;
+    private Long employeeId;
 
     @NotNull(message = "Date is required")
     @PastOrPresent(message = "Date cannot be in the future")
     private LocalDate date;
 
     @NotNull(message = "Start time is required")
-    @FutureOrPresent(message = "Start time cannot be in the past")
     private LocalTime start_time;
 
     @NotNull(message = "End time is required")
-    @FutureOrPresent(message = "End time cannot be in the past")
     private LocalTime end_time;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Attendance type is required")
     private AttendanceType type;
 
     public Attendance() {
     }
 
-    public Attendance(Long id, Employee employee, LocalDate date, LocalTime start_time, LocalTime end_time, AttendanceType type) {
+    public Attendance(Long id, Long employeeId, LocalDate date, LocalTime start_time, LocalTime end_time, AttendanceType type) {
         this.id = id;
-        this.employee = employee;
+        this.employeeId = employeeId;
         this.date = date;
         this.start_time = start_time;
         this.end_time = end_time;
@@ -65,12 +63,12 @@ public class Attendance {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public LocalDate getDate() {

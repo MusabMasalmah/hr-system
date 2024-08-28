@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Employee {
@@ -22,6 +24,7 @@ public class Employee {
             allocationSize = 1
     )
     private Long id;
+
 
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
