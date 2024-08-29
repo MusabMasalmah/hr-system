@@ -38,4 +38,7 @@ public class LeaveRequest {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Request type is required")
     private RequestType type;
+
+    @Lob // for long data
+    private String reasonForHr;
 }
