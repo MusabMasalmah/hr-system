@@ -2,46 +2,43 @@ package com.example.HR_System.models;
 
 import com.example.HR_System.enums.RequestStatus;
 import com.example.HR_System.enums.RequestType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
 
-@Data
 @Entity
+@Data
 public class LeaveRequest {
+
     @Id
-    @SequenceGenerator(
-            name = "LeaveRequest_sequence",
-            sequenceName = "LeaveRequest_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "LeaveRequest_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "leave_request_sequence")
+    @SequenceGenerator(name = "leave_request_sequence", sequenceName = "leave_request_sequence", allocationSize = 1)
     private Long id;
-    private LocalDate startTime;
-    private LocalDate endTime;
+
+    @NotNull(message = "Employee ID is required")
+    private Long employeeId;
+
+    private Long hrEmployeeId;
+
+    @NotNull(message = "Start time is required")
+    private LocalDate start_time;
+
+    @NotNull(message = "End time is required")
+    private LocalDate end_time;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "Request status is required")
     private RequestStatus status;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee; // The employee requesting leave
-
-    @ManyToOne
-    @JoinColumn(name = "hr_employee_id") // Different column name
-    @JsonIgnore
-    private Employee hrEmployee;
-
+    @NotNull(message = "Reason is required")
     private String reason;
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Request type is required")
     private RequestType type;
 
-    public LeaveRequest() {
-    }
-
-
+    @Lob // for long data
+    private String reasonForHr;
 }
