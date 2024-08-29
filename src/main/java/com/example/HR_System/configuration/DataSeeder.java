@@ -1,18 +1,24 @@
 package com.example.HR_System.configuration;
 
 
+import com.example.HR_System.enums.AttendanceType;
+import com.example.HR_System.models.Attendance;
 import com.example.HR_System.models.Employee;
+import com.example.HR_System.repositories.AttendanceRepo;
 import com.example.HR_System.repositories.EmployeeRepo;
 import com.example.HR_System.enums.Roles;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Configuration
 public class DataSeeder {
 
     @Bean
-    public CommandLineRunner loadData(EmployeeRepo employeeRepository) {
+    public CommandLineRunner loadData(EmployeeRepo employeeRepository, AttendanceRepo attendanceRepo) {
         return args -> {
             Employee employee1 = new Employee();
             employee1.setName("John Doe");
@@ -42,6 +48,23 @@ public class DataSeeder {
             employeeRepository.save(employee1);
             employeeRepository.save(employee2);
 
+            // Create and save attendance records
+            Attendance attendance1 = new Attendance();
+            attendance1.setDate(LocalDate.now());
+            attendance1.setStart_time(LocalTime.of(9, 0));
+            attendance1.setEnd_time(LocalTime.of(17, 0));
+            attendance1.setType(AttendanceType.ONSITE); // Use AttendanceType enum
+            attendance1.setEmployeeId(1l);
+
+            Attendance attendance2 = new Attendance();
+            attendance2.setDate(LocalDate.now().minusDays(1));
+            attendance2.setStart_time(LocalTime.of(10, 0));
+            attendance2.setEnd_time(LocalTime.of(18, 0));
+            attendance2.setType(AttendanceType.ONLINE); // Use AttendanceType enum
+            attendance2.setEmployeeId(2l);
+
+            attendanceRepo.save(attendance1);
+            attendanceRepo.save(attendance2);
         };
     }
 }

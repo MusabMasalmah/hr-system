@@ -1,23 +1,17 @@
 package com.example.HR_System.models;
 
 import com.example.HR_System.enums.AttendanceType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-@Setter
-@Getter
 @Entity
-
 public class Attendance {
 
     @Id
@@ -32,35 +26,80 @@ public class Attendance {
     )
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
+    @NotNull(message = "Employee is required")
+    private Long employeeId;
 
     @NotNull(message = "Date is required")
     @PastOrPresent(message = "Date cannot be in the future")
     private LocalDate date;
 
     @NotNull(message = "Start time is required")
-    @FutureOrPresent(message = "Start time cannot be in the past")
     private LocalTime start_time;
 
     @NotNull(message = "End time is required")
-    @FutureOrPresent(message = "End time cannot be in the past")
     private LocalTime end_time;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Attendance type is required")
     private AttendanceType type;
 
     public Attendance() {
     }
 
-    public Attendance(Long id, Employee employee, LocalDate date, LocalTime start_time, LocalTime end_time, AttendanceType type) {
+    public Attendance(Long id, Long employeeId, LocalDate date, LocalTime start_time, LocalTime end_time, AttendanceType type) {
         this.id = id;
-        this.employee = employee;
+        this.employeeId = employeeId;
         this.date = date;
         this.start_time = start_time;
         this.end_time = end_time;
         this.type = type;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(LocalTime start_time) {
+        this.start_time = start_time;
+    }
+
+    public LocalTime getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(LocalTime end_time) {
+        this.end_time = end_time;
+    }
+
+    public AttendanceType getType() {
+        return type;
+    }
+
+    public void setType(AttendanceType type) {
+        this.type = type;
+    }
 }
