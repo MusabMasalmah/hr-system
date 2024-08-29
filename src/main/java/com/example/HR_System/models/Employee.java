@@ -3,9 +3,10 @@ package com.example.HR_System.models;
 import com.example.HR_System.enums.Roles;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,6 +26,7 @@ public class Employee {
             allocationSize = 1
     )
     private Long id;
+
 
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
@@ -55,9 +57,11 @@ public class Employee {
     @Min(value = 0, message = "Max paid leave cannot be negative")
     private Integer max_paid_leave;
 
+
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Role is required")
     private Roles role;
+
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
