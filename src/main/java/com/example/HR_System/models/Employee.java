@@ -39,7 +39,7 @@ public class Employee {
     @Setter
     @Getter
     @Lob
-    private Byte picture;
+    private byte[] picture;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Credit must be positive")
     private Double credit;
