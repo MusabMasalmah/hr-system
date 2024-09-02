@@ -1,10 +1,14 @@
 package com.example.HR_System.controllers;
 
 
+import com.example.HR_System.dto.EmployeeDto;
 import com.example.HR_System.models.Employee;
 import com.example.HR_System.services.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +33,12 @@ public class EmployeeController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return ResponseEntity.ok(employees);
     }
+
+    @GetMapping("/pageable")
+    public Page<EmployeeDto> getAllEmployeesPageable(Pageable pageable) {
+        return employeeService.getAllEmployeesPageable(pageable);
+    }
+
 
     @PostMapping("/v0/employees")
     public ResponseEntity<Employee> postEmployee(@Valid @RequestBody Employee employee) {

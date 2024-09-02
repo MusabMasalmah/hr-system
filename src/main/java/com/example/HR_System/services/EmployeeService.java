@@ -1,19 +1,24 @@
 package com.example.HR_System.services;
 
+import com.example.HR_System.dto.EmployeeDto;
 import com.example.HR_System.models.Employee;
 import com.example.HR_System.repositories.EmployeeRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
+import com.example.HR_System.mapper.EmployeeMapper;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
-    public EmployeeService(EmployeeRepo employeeRepo) {
+    private final EmployeeMapper employeeMapper;
+    public EmployeeService(EmployeeRepo employeeRepo, EmployeeMapper employeeMapper) {
         this.employeeRepo = employeeRepo;
+        this.employeeMapper = employeeMapper;
     }
 
 
@@ -82,6 +87,12 @@ public class EmployeeService {
 
         return employeeRepo.findById(employeeId)
                 .orElseThrow(() -> new IllegalStateException("Employee doesn't exist"));
+    }
+
+
+    public Page<EmployeeDto> getAllEmployeesPageable(Pageable pageable) {
+        Page<Employee> employeePage = employeeRepo.findAll(pageable);
+        return employeePage.map(employeeMapper::toDto);
     }
 
     }
