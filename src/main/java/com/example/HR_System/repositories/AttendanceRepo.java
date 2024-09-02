@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -20,4 +21,13 @@ public interface AttendanceRepo extends JpaRepository<Attendance, Long> {
 
     @Query("SELECT a FROM Attendance a WHERE a.date = CURRENT_DATE")
     Page<Attendance> findAttendancesForCurrentDay(Pageable pageable);
+
+    Attendance findByEmployeeIdAndDate(Long employeeId, LocalDate date);
+
+    @Query("SELECT a FROM Attendance a WHERE a.employeeId = :employeeId AND a.date BETWEEN :startDate AND :endDate")
+    Page<Attendance> findAttendancesByEmployeeIdAndMonth(
+            @Param("employeeId") Long employeeId,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate,
+            Pageable pageable);
 }

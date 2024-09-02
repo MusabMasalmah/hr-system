@@ -1,6 +1,7 @@
 package com.example.HR_System.models;
 
 import com.example.HR_System.enums.AttendanceType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
@@ -34,9 +35,11 @@ public class Attendance {
     private LocalDate date;
 
     @NotNull(message = "Start time is required")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime start_time;
 
     @NotNull(message = "End time is required")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime end_time;
 
     @Enumerated(EnumType.STRING)
@@ -101,5 +104,16 @@ public class Attendance {
 
     public void setType(AttendanceType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Attendance{" +
+                "startTime='" + start_time + '\'' +
+                ", endTime='" + end_time + '\'' +
+                ", date='" + date + '\'' +
+                ", employeeId=" + employeeId +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
