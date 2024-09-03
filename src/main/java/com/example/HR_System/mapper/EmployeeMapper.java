@@ -10,9 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface EmployeeMapper {
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
-    @Mapping(target = "picture", expression = "java(employee.getPicture() != null ? new String(employee.getPicture()) : null)")
     EmployeeDto toDto(Employee employee);
 
-    @Mapping(target = "picture", expression = "java(employeeDto.getPicture() != null ? employeeDto.getPicture().getBytes() : null)")
     Employee toEntity(EmployeeDto employeeDto);
 }

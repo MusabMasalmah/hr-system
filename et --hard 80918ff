@@ -1,0 +1,49 @@
+* [33m1f4a979[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/employee[m[33m, [m[1;32memployee[m[33m)[m added searchbyName
+* [33m80918ff[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m pageable
+*   [33m87ff57c[m[33m ([m[1;32mallServices[m[33m)[m Merge pull request #2 from MusabMasalmah/leaveRequest
+[32m|[m[33m\[m  
+[32m|[m *   [33m896e59e[m[33m ([m[1;31morigin/leaveRequest[m[33m)[m merge the leave request with main
+[32m|[m [34m|[m[32m\[m  
+[32m|[m [34m|[m[32m/[m  
+[32m|[m[32m/[m[34m|[m   
+* [34m|[m   [33ma875413[m Merge pull request #1 from MusabMasalmah/attendance
+[36m|[m[1;31m\[m [34m\[m  
+[36m|[m * [34m\[m   [33m14bab5f[m[33m ([m[1;31morigin/attendance[m[33m)[m resolve conflict
+[36m|[m [1;32m|[m[36m\[m [34m\[m  
+[36m|[m [1;32m|[m[36m/[m [34m/[m  
+[36m|[m[36m/[m[1;32m|[m [34m|[m   
+* [1;32m|[m [34m|[m [33m0ce7134[m merged with leaveRequest
+* [1;32m|[m [34m|[m   [33m8ca3d5a[m Merged LeaveRequest
+[1;34m|[m[1;35m\[m [1;32m\[m [34m\[m  
+* [1;35m|[m [1;32m|[m [34m|[m [33m233f83f[m fixed relations between entities
+[1;35m|[m [1;35m|[m * [34m|[m [33mb180fc1[m finishing attendance backend
+[1;35m|[m [1;35m|[m[1;35m/[m [34m/[m  
+[1;35m|[m[1;35m/[m[1;35m|[m [34m|[m   
+[1;35m|[m [1;35m|[m * [33m9d7c555[m update services and controller2
+[1;35m|[m [1;35m|[m * [33mfe4f721[m Leave Branch with all files controller, service and leave entity
+[1;35m|[m [1;35m|[m[1;35m/[m  
+[1;35m|[m * [33m218638a[m make Controller and services
+[1;35m|[m[1;35m/[m  
+* [33m9839df2[m musab make it work
+* [33md1fbe35[m emp branch
+*   [33m8c6f91b[m Merge branch 'main' of https://github.com/MusabMasalmah/hr-system
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33mad9e97a[m new Branch
+* [31m|[m [33mb918e44[m update attendance
+* [31m|[m [33mfa7742b[m Merge branch 'main' of https://github.com/MusabMasalmah/hr-system
+[32m|[m[31m\[m[31m|[m 
+[32m|[m * [33meb2f778[m added dto and mapper packages
+* [33m|[m [33macc4288[m Merge branch 'main' of https://github.com/MusabMasalmah/hr-system
+[34m|[m[33m\[m[33m|[m 
+[34m|[m * [33mf11af3f[m employee crud operations
+[34m|[m * [33mc3a1a41[m validated employee
+* [35m|[m [33m8e7583f[m Merge branch 'main' of https://github.com/MusabMasalmah/hr-system
+[36m|[m[35m\[m[35m|[m 
+[36m|[m * [33m1ca7c6e[m update
+* [1;31m|[m [33ma1a0f81[m enum feature
+[1;31m|[m[1;31m/[m  
+* [33m9d72747[m enum feature
+* [33md2edc6d[m  employee model
+* [33m972324a[m enum feature
+* [33m2602027[m enum feature
+* [33m3788e70[m initial commit
