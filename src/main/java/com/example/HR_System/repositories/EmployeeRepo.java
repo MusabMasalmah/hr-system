@@ -19,4 +19,6 @@ public interface EmployeeRepo extends JpaRepository<Employee, Long> {
             "FROM Employee e WHERE e.name = :name AND e.address = :address")
     boolean existsByNameAndAddress(@Param("name") String name, @Param("address") String address);
 
+    Optional<Employee> findByEmail(String email);
+
 }
