@@ -39,6 +39,7 @@ public class Employee {
     @Setter
     @Getter
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte[] picture;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Credit must be positive")

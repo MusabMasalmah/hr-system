@@ -12,7 +12,8 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
-    List<Employee> findByName(String name);
+    @Query("SELECT e FROM Employee e WHERE UPPER(e.name) LIKE UPPER(CONCAT('%', :searchTerm, '%'))")
+    List<Employee> searchByName(@Param("searchTerm") String searchTerm);
 
 
     @Query("SELECT CASE WHEN COUNT(e) > 0 THEN TRUE ELSE FALSE END " +

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import com.example.HR_System.mapper.EmployeeMapper;
 import java.util.List;
@@ -80,19 +81,25 @@ public class EmployeeService {
 
 
     // get user by id
-    public Employee getById(Long employeeId){
+    public Optional<EmployeeDto> getById(Long employeeId){
         if (employeeId <= 0 ) {
             throw new IllegalArgumentException("ID must be greater than zero");
         }
-
-        return employeeRepo.findById(employeeId)
-                .orElseThrow(() -> new IllegalStateException("Employee doesn't exist"));
+        Optional<Employee> employee = employeeRepo.findById(employeeId);
+         return employee.map(employeeMapper::toDto);
     }
 
 
     public Page<EmployeeDto> getAllEmployeesPageable(Pageable pageable) {
         Page<Employee> employeePage = employeeRepo.findAll(pageable);
         return employeePage.map(employeeMapper::toDto);
+    }
+
+    @Transactional
+    public List<Employee> searchEmployeeByName(String searchTerm){
+
+        System.out.println("Search term: " + searchTerm);
+        return employeeRepo.searchByName(searchTerm.trim());
     }
 
     }

@@ -34,6 +34,16 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+    @GetMapping("/v0/employees/search")
+    public ResponseEntity<List<Employee>> Searchemployees(@RequestParam  String searchTerm) {
+        List<Employee> employees = employeeService.searchEmployeeByName(searchTerm);
+        System.out.println(employees);
+        if (employees.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(employees);
+    }
+
     @GetMapping("/pageable")
     public Page<EmployeeDto> getAllEmployeesPageable(Pageable pageable) {
         return employeeService.getAllEmployeesPageable(pageable);
@@ -69,9 +79,11 @@ public class EmployeeController {
     }
 
     @GetMapping("/v0/employees/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        return ResponseEntity.ok(employeeService.getById(id));
+    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
+
+        return ResponseEntity.ok(employeeService.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
+
 
 
 }
