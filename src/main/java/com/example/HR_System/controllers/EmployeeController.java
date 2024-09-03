@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin(origins = "http://localhost:4200")  // Allow requests from this origin
 public class EmployeeController {
     private final EmployeeService employeeService;
 
