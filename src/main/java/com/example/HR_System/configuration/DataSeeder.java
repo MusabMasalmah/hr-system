@@ -2,11 +2,15 @@ package com.example.HR_System.configuration;
 
 
 import com.example.HR_System.enums.AttendanceType;
+import com.example.HR_System.enums.RequestType;
+import com.example.HR_System.enums.RequestStatus;
 import com.example.HR_System.models.Attendance;
 import com.example.HR_System.models.Employee;
+import com.example.HR_System.models.LeaveRequest;
 import com.example.HR_System.repositories.AttendanceRepo;
 import com.example.HR_System.repositories.EmployeeRepo;
 import com.example.HR_System.enums.Roles;
+import com.example.HR_System.repositories.LeaveRequestRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +22,7 @@ import java.time.LocalTime;
 public class DataSeeder {
 
     @Bean
-    public CommandLineRunner loadData(EmployeeRepo employeeRepository, AttendanceRepo attendanceRepo) {
+    public CommandLineRunner loadData(EmployeeRepo employeeRepository, AttendanceRepo attendanceRepo, LeaveRequestRepo leaveRequestRepo) {
         return args -> {
             Employee employee3 = new Employee();
             employee3.setName("alawia Smith");
@@ -82,6 +86,31 @@ public class DataSeeder {
 
             attendanceRepo.save(attendance1);
             attendanceRepo.save(attendance2);
+
+
+            LeaveRequest leaveRequest1 = new LeaveRequest();
+            leaveRequest1.setEmployeeId(1L);
+            leaveRequest1.setHrEmployeeId(2L);
+            leaveRequest1.setStart_time(LocalDate.of(2024, 9, 1));
+            leaveRequest1.setEnd_time(LocalDate.of(2024, 9, 7));
+            leaveRequest1.setStatus(RequestStatus.PENDING);
+            leaveRequest1.setReason("Annual Leave");
+            leaveRequest1.setType(RequestType.PAID);
+            leaveRequest1.setReasonForHr("No objections");
+
+            LeaveRequest leaveRequest2 = new LeaveRequest();
+            leaveRequest2.setEmployeeId(1L);
+            leaveRequest2.setHrEmployeeId(2L);
+            leaveRequest2.setStart_time(LocalDate.of(2024, 10, 1));
+            leaveRequest2.setEnd_time(LocalDate.of(2024, 10, 10));
+            leaveRequest2.setStatus(RequestStatus.PENDING);
+            leaveRequest2.setReason("Sick Leave");
+            leaveRequest2.setType(RequestType.PAID);
+            leaveRequest2.setReasonForHr("Pending HR approval");
+
+            // Save the leave requests to the database
+            leaveRequestRepo.save(leaveRequest1);
+            leaveRequestRepo.save(leaveRequest2);
         };
     }
 }

@@ -102,6 +102,12 @@ public class EmployeeService {
         return employeeRepo.searchByName(searchTerm.trim());
     }
 
+    public boolean getByEmail(String email){
+
+        Optional<Employee> employee = Optional.ofNullable(employeeRepo.findByEmail(email));
+        return employee.isPresent();
+    }
+
     }
 
 

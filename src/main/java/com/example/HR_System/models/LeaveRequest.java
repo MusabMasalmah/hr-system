@@ -39,6 +39,6 @@ public class LeaveRequest {
     @NotNull(message = "Request type is required")
     private RequestType type;
 
-    @Lob // for long data
+    @Column(columnDefinition = "TEXT")
     private String reasonForHr;
 }
