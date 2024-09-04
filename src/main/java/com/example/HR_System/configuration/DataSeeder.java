@@ -32,6 +32,18 @@ public class DataSeeder {
             employee3.setRole(Roles.HR);
             employee3.setPassword("securepass4567");
 
+            Employee employee4 = new Employee();
+            employee4.setName("anas karakra");
+            employee4.setEmail("123.smith@example.com");
+            employee4.setPicture(null);
+            employee4.setCredit(2000.0);
+            employee4.setPosition("123 Manager");
+            employee4.setPhone_number("0987654321");
+            employee4.setAddress("456 Oak Avenue");
+            employee4.setMax_paid_leave(20);
+            employee4.setRole(Roles.HR);
+            employee4.setPassword("securepass4567");
+
             Employee employee1 = new Employee();
             employee1.setName("John Doe");
             employee1.setEmail("john.doe@example.com");
@@ -64,6 +76,7 @@ public class DataSeeder {
 
             employeeRepository.save(employee1);
             employeeRepository.save(employee2);
+            employeeRepository.save(employee4);
 
             // Create and save attendance records
             Attendance attendance1 = new Attendance();

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -23,10 +24,10 @@ public class LeaveRequest {
     private Long hrEmployeeId;
 
     @NotNull(message = "Start time is required")
-    private LocalDate start_time;
+    private LocalDateTime start_time;
 
     @NotNull(message = "End time is required")
-    private LocalDate end_time;
+    private LocalDateTime  end_time;
 
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Request status is required")
@@ -39,6 +40,6 @@ public class LeaveRequest {
     @NotNull(message = "Request type is required")
     private RequestType type;
 
-    @Lob // for long data
+    @Column(columnDefinition = "TEXT")
     private String reasonForHr;
 }

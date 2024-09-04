@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/v0/leave-requests")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LeaveRequestController {
 
     private final LeaveRequestServices leaveRequestServices;
