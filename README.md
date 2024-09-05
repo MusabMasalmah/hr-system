@@ -4,6 +4,15 @@
 
 The HR System is a comprehensive application for managing human resources functions within an organization. This system includes functionalities for employee management, leave requests, and attendance tracking. It provides RESTful APIs for seamless integration and operation.
 
+## Video For Testing
+
+
+
+https://github.com/user-attachments/assets/0211f797-3181-4051-ac36-5047006b49e5
+
+
+
+
 ## Features
 
 - **Employee Management**: Manage employee records with CRUD operations.
