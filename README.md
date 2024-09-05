@@ -1,86 +1,126 @@
-HR System Backend
+# HR System
 
-Description
+## Overview
 
-The HR System Backend is a Spring Boot application that provides RESTful APIs for managing employees, leave requests, and attendance records. It supports CRUD operations, pagination, and various other features essential for HR management.
+The HR System is a comprehensive application for managing human resources functions within an organization. This system includes functionalities for employee management, leave requests, and attendance tracking. It provides RESTful APIs for seamless integration and operation.
 
-Features
+## Features
 
-- Employee Management: CRUD operations for employee records.
-- Leave Requests: CRUD operations for leave requests and tracking.
-- Attendance Tracking: Managing and retrieving attendance records, including working hours calculation.
+- **Employee Management**: Manage employee records with CRUD operations.
+- **Leave Requests**: Handle leave requests, including submission, approval, and tracking.
+- **Attendance Tracking**: Record and manage attendance, including start and end times, and calculate working hours.
 
-Technologies Used
+## Technology Stack
 
-- Spring Boot: Framework for building the backend service.
-- JPA/Hibernate: For ORM and database interaction.
-- PostgreSQL: Database for storing records.
-- MapStruct: For mapping between entities and DTOs.
+- **Backend Framework**: Spring Boot
+- **Database**: PostgreSQL
+- **Dependency Management**: Maven
 
-Setup and Installation
+## Getting Started
 
-1. Clone the Repository
+### Prerequisites
 
-   git clone <repository-url>
-   cd <repository-directory>
+- Java 11 or higher
+- PostgreSQL
+- Maven
+- Git
 
-2. Install Dependencies
+### Setup the Database
 
-   Ensure you have Maven installed. Then, run:
+1. Create a PostgreSQL database named `hr_system`.
+2. Configure the database connection in `src/main/resources/application.properties`.
 
-   mvn install
+### Build and Run
 
-3. Configuration
+1. Clone the repository:
 
-   Configure your application.properties or application.yml with database connection details and other settings.
+    ```bash
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
 
-4. Run the Application
+2. Install dependencies and build the project:
 
-   To start the Spring Boot application, use:
+    ```bash
+    mvn clean install
+    ```
 
-   mvn spring-boot:run
+3. Run the application:
 
-5. Access the API
+    ```bash
+    mvn spring-boot:run
+    ```
 
-   The application runs on http://localhost:8080. The available endpoints include:
+4. Access the application at `http://localhost:8080`.
 
-   - Employee Management: /api/employees
-   - Leave Requests: /api/leave-requests
-   - Attendance Tracking: /api/attendance
+## API Endpoints
 
-API Endpoints
+### Employee Management
 
-Employee
-- GET /api/employees
-- POST /api/employees
-- GET /api/employees/{id}
-- PUT /api/employees/{id}
-- DELETE /api/employees/{id}
+- **GET** `/api/employees` - Retrieve all employees
+- **POST** `/api/employees` - Add a new employee
+- **GET** `/api/employees/{id}` - Retrieve an employee by ID
+- **PUT** `/api/employees/{id}` - Update an employee's details
+- **DELETE** `/api/employees/{id}` - Delete an employee
 
-Leave Requests
-- GET /api/leave-requests
-- POST /api/leave-requests
-- GET /api/leave-requests/{id}
-- PUT /api/leave-requests/{id}
-- DELETE /api/leave-requests/{id}
+### Leave Requests
 
-Attendance
-- GET /api/attendance
-- POST /api/attendance
-- GET /api/attendance/{id}
-- PUT /api/attendance/{id}
-- DELETE /api/attendance/{id}
+- **GET** `/api/leave-requests` - Retrieve all leave requests
+- **POST** `/api/leave-requests` - Submit a new leave request
+- **GET** `/api/leave-requests/{id}` - Retrieve a leave request by ID
+- **PUT** `/api/leave-requests/{id}` - Update a leave request
+- **DELETE** `/api/leave-requests/{id}` - Delete a leave request
 
-Testing
+### Attendance Tracking
 
-Run unit and integration tests with:
+- **GET** `/api/attendance` - Retrieve all attendance records
+- **POST** `/api/attendance` - Record new attendance
+- **GET** `/api/attendance/{id}` - Retrieve an attendance record by ID
+- **PUT** `/api/attendance/{id}` - Update an attendance record
+- **DELETE** `/api/attendance/{id}` - Delete an attendance record
 
-   mvn test
+## Annotations Explained
 
-Contributing
+- **@RestController**: Indicates that the class is a RESTful controller, combining `@Controller` and `@ResponseBody`.
+- **@RequestMapping**: Maps HTTP requests to handler methods of MVC and REST controllers.
+- **@GetMapping**: Shortcut for `@RequestMapping(method = RequestMethod.GET)`.
+- **@PostMapping**: Shortcut for `@RequestMapping(method = RequestMethod.POST)`.
+- **@PathVariable**: Binds a method parameter to a URI template variable.
+- **@RequestBody**: Binds a method parameter to the body of the web request.
+- **@Autowired**: Marks a field or method to be autowired by Spring's dependency injection.
+- **@Service**: Indicates that an annotated class is a service.
+- **@Repository**: Indicates that an annotated class is a repository, an abstraction for data access.
+- **@Query**: Declares finder queries directly on repository methods.
+- **@Transactional**: Manages transactions declaratively.
+- **@OneToOne**, **@OneToMany**, **@ManyToMany**, **@ManyToOne**: Define relationships between entities.
 
-Feel free to open issues and submit pull requests. Please ensure your code follows the project's coding standards and includes tests.
+## Contributing
 
-License
+1. Fork the repository.
+2. Create a new branch:
 
-This project is licensed under the MIT License.
+    ```bash
+    git checkout -b feature-branch
+    ```
+
+3. Commit your changes:
+
+    ```bash
+    git commit -am 'Add new feature'
+    ```
+
+4. Push to the branch:
+
+    ```bash
+    git push origin feature-branch
+    ```
+
+5. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or issues, please contact [musabsoos10@gmail.com](mailto:musabsoos10@gmail.com).
